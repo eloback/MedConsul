@@ -22,62 +22,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spOpMain = findViewById(R.id.spOpcoesMain);
+        createDB();
 
-        String[] opcoesMain = new String[] {
-                "-SELECIONE-",
-                "Médico",
-                "Paciente",
-                "Consulta"
-        };
-        ArrayAdapter<String> spArrayAdapterMain =
-                new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, opcoesMain);
-        spOpMain.setAdapter(spArrayAdapterMain);
+        Button clickAddPaciente = findViewById(R.id.buttonAddP);
+        Button clickLPaciente = findViewById(R.id.buttonLP);
+        createButtonAndSetListener(clickAddPaciente, clickLPaciente, AddPacienteActivity.class, ListarPacienteActivity.class);
 
-        criarBD();
+        Button clickAddMedico = findViewById(R.id.buttonAddM);
+        Button clickLMedico = findViewById(R.id.buttonLM);
+        createButtonAndSetListener(clickAddMedico, clickLMedico, AddMedicoActivity.class, ListarMedicoActivity.class);
 
-        Button clickAdicionar = findViewById(R.id.btn_Adicionar);
-        clickAdicionar.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              String nomeOpcaoMain = spOpMain.getSelectedItem().toString();
-              if (nomeOpcaoMain.equals("Médico")){
-                  Intent i = new Intent(getApplicationContext(), AddMedicoActivity.class);
-                  startActivity(i);
-              }
-              else if (nomeOpcaoMain.equals("Paciente")){
-                  Intent i = new Intent(getApplicationContext(), AddPacienteActivity.class);
-                  startActivity(i);
-              }else if (nomeOpcaoMain.equals("Consulta") ){
-                  Intent i = new Intent(getApplicationContext(), AddConsultaActivity.class);
-                  startActivity(i);
-              }
-            }
-        }));
-
-        Button clickListar = findViewById(R.id.btn_Listar);
-        clickListar.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String nomeOpcaoMain = spOpMain.getSelectedItem().toString();
-                if (nomeOpcaoMain.equals("Médico")){
-                    Intent i = new Intent(getApplicationContext(), ListarMedicoActivity.class);
-                    startActivity(i);
-                }
-                else if (nomeOpcaoMain.equals("Paciente")){
-                    Intent i = new Intent(getApplicationContext(), ListarPacienteActivity.class);
-                    startActivity(i);
-                }else if (nomeOpcaoMain.equals("Consulta") ){
-                    Intent i = new Intent(getApplicationContext(), ListarConsultaActivity.class);
-                    startActivity(i);
-                }
-            }
-        }));
+        Button clickAddConsulta = findViewById(R.id.buttonAddC);
+        Button clickLConsulta = findViewById(R.id.buttonLC);
+        createButtonAndSetListener(clickAddConsulta, clickLConsulta, AddConsultaActivity.class, ListarConsultaActivity.class);
 
     }
 
-    private void criarBD(){
+    private void createButtonAndSetListener(Button botaoAdd, Button botaoL, final Class proxTelaAdd, final Class proxTelaL){
+        botaoAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), proxTelaAdd);
+                startActivity(i);
+            }
+        });
+        botaoL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), proxTelaL);
+                startActivity(i);
+            }
+        });
+    }
+
+    private void createDB(){
         db = openOrCreateDatabase("consulta.db", Context.MODE_PRIVATE, null);
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS medico(");

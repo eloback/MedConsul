@@ -2,8 +2,9 @@
     <string name="app_name">MedConsul</string>
     <string name="gerenciamento_de_consultas">Gerenciamento de Consultas</string>
     <string name="escolha_uma_op">Escolha uma opção:</string>
-    <string name="adicionar">Adicionar</string>
-    <string name="listar">Listar</string>
+    <string name="op_01">Gerenciar Paciente</string>
+    <string name="op_02">Gerenciar Médico</string>
+    <string name="op_03">Gerenciar Consulta</string>
     <string name="adicionar_medico">Adicionar Médico</string>
     <string name="campos_obrigatorios">Campos obrigatórios*</string>
     <string name="nome">Nome*</string>
