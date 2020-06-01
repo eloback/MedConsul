@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.univali.cc.prog.medconsul">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="br.univali.cc.prog.medconsul.EditarConsultaActivity"></activity>
+        <activity android:name="br.univali.cc.prog.medconsul.EditarPacienteActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.EditarMedicoActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.ListarConsultaActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.ListarPacienteActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.ListarMedicoActivity" />
+        <activity android:name=".ListarMedidcoActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.AddConsultaActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.AddPacienteActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.AddMedicoActivity" />
+        <activity android:name="br.univali.cc.prog.medconsul.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
